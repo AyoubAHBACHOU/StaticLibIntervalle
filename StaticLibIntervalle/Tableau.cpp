@@ -12,12 +12,15 @@ Math::Tableau::Tableau(unsigned int i)
 	else {
 		this->taille = 1;
 	}
-	this->tab = new float[i];
+	this->tab = new float[i]();
 	//pour test
-	for (int k = 0; k < this->taille; k++)
-	{
-		this->tab[k] = 0.0;
-	}
+	/*if (this->tab) {
+		for (int k = 0; k < this->taille; k++)
+		{
+			this->tab[k] = 0.0;
+		}
+	}*/
+	
 }
 
 Math::Tableau::Tableau(const Tableau& t)
@@ -35,6 +38,10 @@ Tableau& Math::Tableau::operator=(const Tableau& T)
 	if (this != &T)
 	{
 		this->taille = T.taille;
+		if (this->tab) {
+			delete[] this->tab;
+			this->tab = 0;
+		}
 		this->tab = new float[T.taille];
 		for (int i = 0; i < T.taille; i++)
 		{
@@ -46,7 +53,7 @@ Tableau& Math::Tableau::operator=(const Tableau& T)
 
 float& Math::Tableau::operator[](int indice) const
 {
-	assert(indice > 0 && indice < this->taille);
+	assert(indice >= 0 && indice < this->taille);
 	try {
 		if (indice < 0 || indice >= this->taille)
 			throw "indice invalide";
@@ -57,7 +64,7 @@ float& Math::Tableau::operator[](int indice) const
 	}
 }
 
-void Math::Tableau::print()
+void Math::Tableau::print() const
 {
 	for (int i = 0; i < this->taille; i++)
 	{
@@ -69,7 +76,7 @@ void Math::Tableau::print()
 
 Math::Tableau::~Tableau()
 {
-	if (!this->tab)
+	if (this->tab)
 	{
 		delete[] this->tab;
 		this->tab = 0;

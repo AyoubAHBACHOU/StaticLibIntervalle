@@ -11,18 +11,19 @@ using namespace std;
 int main()
 {
     Tableau T1(3);
-    //T1.print();
-    Tableau T2(2);
+    T1.print();
+    //Tableau T2(2);
     //T2.print();
-    T1 = T2;
+    //T1 = T2;
     //T1.print();
-    T1[1] = 2.5;
+    //T1[1] = 2.5;
     //cout << T1[1];
     TableauBorne TB(2, 0, 4);
+    TB.operator()(0, 1.5);
     TB.afficher();
-    TB(0, 0.52);
-    TB(1, 3.9);
-    TB.afficher();
+    //TB(0, 0.52);
+    //TB(1, 3.9);
+    //TB.afficher();
 
 }
 

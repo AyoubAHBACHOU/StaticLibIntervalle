@@ -11,7 +11,7 @@ namespace Math {
 		Tableau (const Tableau& t);
 		Tableau& operator=(const Tableau& T);
 		float& operator[](int indice) const;
-		void print();
+		void print() const;
 		~Tableau();
 
 	};
